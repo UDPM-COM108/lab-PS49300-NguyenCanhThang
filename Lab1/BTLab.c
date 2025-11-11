@@ -64,8 +64,6 @@ int main(){
     printf("Diem trung binh la: %.2f\n", diemTB);
 
 // BT5. Tinh chu vi, dien tich tam giac vuong
-
-
     float a, b, c, chuVitgv=0, dienTichtgv=1;
 
     printf("Nhap do dai canh a,b,c: ");
