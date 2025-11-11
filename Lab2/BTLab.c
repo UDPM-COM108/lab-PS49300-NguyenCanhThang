@@ -63,8 +63,6 @@ int main(){
     diemTB = (toan * 3 + ly * 2 + hoa * 1) / (3 + 2 + 1);
     printf("Diem trung binh la: %.2f\n", diemTB);
 
-    
-
 // BT5. Tinh chu vi, dien tich tam giac vuong
 
     float a, b, c, chuVitgv=0, dienTichtgv=1;
