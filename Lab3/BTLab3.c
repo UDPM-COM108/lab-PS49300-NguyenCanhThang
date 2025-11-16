@@ -102,7 +102,7 @@ int main(){
                 }
         }break;
         case 0:{
-            printf("Hen gap lai ban");
+            printf("Hen gap lai ban!");
             exit(0);
         }
         default:{
@@ -111,7 +111,6 @@ int main(){
             break;
         }
     }while (luachon!=0);
-    
     return 0;
 }
 
