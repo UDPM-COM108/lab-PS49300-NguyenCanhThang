@@ -101,6 +101,5 @@ int main()
     tbsumchiahetcho3();
     timmaxmintrongmang();
     sapxepmanggiamdan();
-    binhphuongptmang2c();
     return 0;
 }
