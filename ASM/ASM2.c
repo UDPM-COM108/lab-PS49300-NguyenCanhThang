@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 void chucnang1(){
     printf("Nhap vo mot so: ");
@@ -169,6 +170,112 @@ void chucnang6(){
     }
 }
 
+void chucnang7(){
+    printf("Nhap vao so phan tram vay toi da: ");
+    int tileVay;
+    scanf("%d", &tileVay);
+    const float giatriXe = 500000000;
+    const float laisuatNam = 0.072; // 7.2%/nam
+    const int soNam = 24;
+    const int soThang = soNam * 12;
+    if(tileVay < 0 || tileVay > 100){
+        printf("Ti le vay khong hop le!");
+        return;
+    }
+
+    float traTruoc = giatriXe * (100 - tileVay) / 100;
+    float tienVay = giatriXe * tileVay / 100;
+    float laiThang = laisuatNam / 12;
+    float traGop = tienVay * (laiThang * pow(1+laiThang, soThang)) / (pow(1+laiThang, soThang) - 1);
+
+    printf("\nGia tri xe: %.0f VND\n", giatriXe);
+    printf("Phan tram vay: %.d%%\n", tileVay);
+    printf("Tien phai tra truoc: %.0f VND\n", traTruoc);
+    printf("Tien vay: %.0f VND\n", tienVay);
+    printf("So tien phai tra hang thang: %.0f VND\n", traGop);
+    printf("Thoi han vay: %d nam (%d thang)\n", soNam, soThang);
+}
+
+struct SinhVien{
+    char hoten[50];
+    float diem;
+    char hocluc[20];
+};
+void chucnang8(){
+    int n;
+    printf("Nhap vao so luong sinh vien: ");
+    scanf("%d", &n);
+    getchar();
+
+    struct SinhVien sv[n];
+    for(int i= 0; i < n; i++){
+        printf("\nNhap ten sinh vien %d: ", i+1);
+        fgets(sv[i].hoten, sizeof(sv[i].hoten), stdin);
+        sv[i].hoten[strcspn(sv[i].hoten, "\n")] = 0;
+        
+        printf("Nhap diem sinh vien %d: ", i + 1);
+        scanf("%f", &sv[i].diem);
+        getchar();
+
+        if(sv[i].diem > 10 || sv[i].diem < 0){
+            printf("Diem khong hop le!");
+            return;
+        }
+        if(sv[i].diem >= 9)
+            strcpy(sv[i].hocluc, "Xuat sac");
+        else if(sv[i].diem >= 8)
+            strcpy(sv[i].hocluc, "Gioi");
+        else if(sv[i].diem >= 7)
+            strcpy(sv[i].hocluc, "Kha");
+        else if(sv[i].diem >= 5)
+            strcpy(sv[i].hocluc, "Trung binh");
+        else
+            strcpy(sv[i].hocluc, "Yeu");
+    }
+
+    for(int i = 0; i < n-1; i++){
+        for(int j = i+1; j < n; j++){
+            if(sv[i].diem > sv[i].diem){
+                struct SinhVien temp = sv[i];
+                sv[i] = sv[j];
+                sv[j] = temp;
+            }
+        }
+    }
+    printf("\nDanh sach sau khi sap xep\n");
+    for(int i=0; i <n; i++){
+        printf("%d. %s | %.2f | %s\n", i+1, sv[i].hoten, sv[i].diem, sv[i].hocluc);
+    }
+}
+
+void chucnang9(){
+    int x, y;
+    printf("Nhap so thu 1 (1-15): ");
+    scanf("%d", &x);
+    printf("Nhap so thu 2 (1-15): ");
+    scanf("%d", &y);
+    
+    if(x < 1 || x > 15 || y < 1 || y > 15){
+        printf("Nhap khong hop le!");
+        return;
+    }
+    srand(time(NULL));
+    int r1 = rand() % 15 + 1;
+    int r2 = rand() % 15 + 1;
+    printf("\nHe thong quay ra: %d - %d\n", r1, r2);
+    int trung = 0;
+    if(x==r1 || x==r2)
+        trung++;
+    if(y==r2 || y==r1)
+        trung++;
+    if(trung==0)
+        printf("Khong trung so nao. Chuc may man lan sau!\n");
+    else if(trung==1)
+        printf("Ban trung 1 so. Chuc mung ban dat giai Nhi!\n");
+    else
+        printf("Trung 2 so. Chuc mung ban da trung giai Nhat!\n");
+}
+
 int main(){
     int luachon;
     do{
@@ -208,15 +315,15 @@ int main(){
             case 6:{
                 chucnang6();
                 }break;
-            // case 7:{
-            //     chucnang7();
-            //     }break;
-            // case 8:{
-            //     chucnang8();
-            //     }break;
-            // case 9:{
-            //     chucnang9();
-            //     }break;
+            case 7:{
+                chucnang7();
+                }break;
+            case 8:{
+                chucnang8();
+                }break;
+            case 9:{
+                chucnang9();
+                }break;
             // case 10:{
             //     chucnang10();
             //     }break;
