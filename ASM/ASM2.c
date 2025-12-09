@@ -182,12 +182,10 @@ void chucnang7(){
         printf("Ti le vay khong hop le!");
         return;
     }
-
     float traTruoc = giatriXe * (100 - tileVay) / 100;
     float tienVay = giatriXe * tileVay / 100;
     float laiThang = laisuatNam / 12;
     float traGop = tienVay * (laiThang * pow(1+laiThang, soThang)) / (pow(1+laiThang, soThang) - 1);
-
     printf("\nGia tri xe: %.0f VND\n", giatriXe);
     printf("Phan tram vay: %.d%%\n", tileVay);
     printf("Tien phai tra truoc: %.0f VND\n", traTruoc);
@@ -276,6 +274,30 @@ void chucnang9(){
         printf("Trung 2 so. Chuc mung ban da trung giai Nhat!\n");
 }
 
+void chucnang10(){
+    int a, b, c, d; 
+    // a/b và c/d
+
+    printf("Nhap phan so thu 1 (a b): ");
+    scanf("%d %d", &a, &b);
+    printf("Nhap phan so thu 2 (c d): ");
+    scanf("%d %d", &c, &d);
+    int tong_tu = a*d + c*b;//Tong
+    int tong_mau = b*d;
+    int hieu_tu = a*d - c*b;//Hieu
+    int hieu_mau = b*d;
+    int tich_tu = a*c;//Tich
+    int tich_mau = b*d;
+    int thuong_tu = a*d;//Thuong
+    int thuong_mau = b*c;
+
+    // Kết quả
+    printf("\nTong: %d/%d", tong_tu, tong_mau);
+    printf("\nHieu: %d/%d", hieu_tu, hieu_mau);
+    printf("\nTich: %d/%d", tich_tu, tich_mau);
+    printf("\nThuong: %d/%d\n", thuong_tu, thuong_mau);
+}
+
 int main(){
     int luachon;
     do{
@@ -324,9 +346,9 @@ int main(){
             case 9:{
                 chucnang9();
                 }break;
-            // case 10:{
-            //     chucnang10();
-            //     }break;
+            case 10:{
+                chucnang10();
+                }break;
             case 0:{
                 printf("\nHen gap lai!!!");
                     exit(0);
