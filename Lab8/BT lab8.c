@@ -69,7 +69,6 @@ int main() {
     struct nhanvien ds[5];
 
     nhapNV(ds, n);
-
     printf("\nDanh sach nhan vien vua nhap\n");
     xuatNV(ds, n);
 
